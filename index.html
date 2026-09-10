@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+
+    <style>
+      .calculator {
+        border: 2px solid lightgray;
+        border-radius: 20px;
+        width: 350px;
+        margin: 170px auto;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      button {
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+        margin: 6px;
+        border-radius: 20px;
+        border: none;
+        background-color: lightgray;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .screen {
+        width: 75%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        background-color: dodgerblue;
+        color: white;
+        border-radius: 20px;
+        border: none;
+        padding: 15px;
+        text-align: right;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .color-c {
+        background-color: navy;
+        color: white;
+      }
+      .color-minus {
+        background-color: red;
+        color: white;
+      }
+      .color-divide {
+        background-color: dodgerblue;
+        color: white;
+      }
+      .color-multiply {
+        background-color: orange;
+        color: white;
+      }
+      .color-plus {
+        background-color: limegreen;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="calculator">
+      <input type="text" class="screen" value="12345" readonly />
+      <br />
+
+      <div class="buttons">
+        <div class="firstbuttons">
+          <button>%</button>
+          <button>√</button>
+          <button>CE</button>
+          <button class="color-c">C</button>
+          <br />
+        </div>
+
+        <div class="secondbuttons">
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button class="color-minus">-</button>
+          <br />
+        </div>
+
+        <div class="thirdbuttons">
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button class="color-divide">÷</button>
+          <br />
+        </div>
+
+        <div class="fourthbuttons">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button class="color-multiply">×</button>
+          <br />
+        </div>
+
+        <div class="fifthbuttons">
+          <button>.</button>
+          <button>0</button>
+          <button>=</button>
+          <button class="color-plus">+</button>
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
