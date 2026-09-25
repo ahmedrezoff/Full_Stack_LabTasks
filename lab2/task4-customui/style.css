@@ -1,0 +1,464 @@
+/*TOTAL AI FUN WITH THIS TASK*/
+
+
+:root {
+    --bg-warm: #fff3e6;
+    --card-surface: #ffffff;
+    --accent-orange: #e85d04;
+    --accent-peach: #ffba08;
+    --text-main: #3d2314;
+    --text-muted: #8c6e58;
+    --border-soft: rgba(232, 93, 4, 0.15);
+    --shadow-soft: 0 12px 35px rgba(220, 100, 40, 0.08);
+}
+
+/* universal selector applies box sizing border box so padding does not push elements wider than specified */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* selection pseudo element changes the highlight color when user selects any text */
+::selection {
+    background-color: var(--accent-orange);
+    color: white;
+}
+
+body {
+    background-color: var(--bg-warm);
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    padding-bottom: 60px;
+    min-height: 100vh;
+}
+
+/* sticky positioning keeps the navigation bar fixed at the top only when scrolling past it */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 243, 230, 0.85);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.nav-brand {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent-orange);
+    letter-spacing: 1px;
+}
+
+.search-wrapper {
+    width: 320px;
+}
+
+/* focus within state triggers on parent when child input receives cursor focus */
+.search-wrapper:focus-within {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 18px;
+    border-radius: 30px;
+    border: 1px solid var(--border-soft);
+    background-color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+/* attribute selector targets data attributes specifically */
+.nav-status[data-status="live"] {
+    font-size: 13px;
+    font-weight: bold;
+    color: green;
+    background: rgba(0, 128, 0, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* grid layout automatically splits the dashboard into responsive columns */
+.dashboard-wrapper {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+
+/* base widget styling using box model rules */
+.widget-card {
+    background: var(--card-surface);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* state pseudo class hover effect */
+.widget-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(220, 100, 40, 0.14);
+}
+
+/* event card spans seven columns on desktop */
+.card-event {
+    grid-column: span 7;
+    background: linear-gradient(135deg, #ffffff, #fff8f0);
+}
+
+.event-badge {
+    display: inline-block;
+    background: rgba(232, 93, 4, 0.1);
+    color: var(--accent-orange);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+/* fluid clamp unit scales font dynamically based on screen width */
+.event-time {
+    font-size: clamp(38px, 5vw, 56px);
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1.1;
+}
+
+.event-location {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+.event-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+    color: var(--text-main);
+}
+
+.step-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: gainsboro;
+}
+
+.dot.active {
+    background: var(--accent-orange);
+    width: 18px;
+    border-radius: 10px;
+}
+
+.dot-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-left: 6px;
+}
+
+.btn-primary {
+    background: var(--accent-orange);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(232, 93, 4, 0.3);
+}
+
+/* active pseudo class scales button down on click like physical push */
+.btn-primary:active {
+    transform: scale(0.96);
+}
+
+/* audio card spans five columns */
+.card-audio {
+    grid-column: span 5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.audio-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+/* pure css vinyl illustration built with radial gradients and pseudo element */
+.vinyl-record {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #2b2b2b 30%, #111111 70%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.vinyl-center {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent-orange);
+    border: 4px solid white;
+}
+
+/* pseudo element creates tiny center hole of vinyl */
+.vinyl-center::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.track-title {
+    font-size: 16px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.track-artist {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+/* calc unit calculates dynamic width with exact pixel deduction */
+.track-bar {
+    width: calc(100% - 20px);
+    height: 6px;
+    background: whitesmoke;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.track-progress {
+    width: 65%;
+    height: 100%;
+    background: var(--accent-orange);
+    border-radius: 10px;
+}
+
+.audio-controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.ctrl-btn {
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent-orange);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* tasks card spans six columns */
+.card-tasks {
+    grid-column: span 6;
+}
+
+.tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: #fffaf5;
+}
+
+/* hiding original ugly checkbox while keeping it accessible */
+.task-item input[type="checkbox"] {
+    display: none;
+}
+
+.task-custom-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-orange);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* adjacent sibling selector changes custom box when original input is checked */
+.task-item input[type="checkbox"]:checked + .task-custom-box {
+    background: var(--accent-orange);
+}
+
+/* pseudo element draws checkmark mark using simple borders */
+.task-item input[type="checkbox"]:checked + .task-custom-box::after {
+    content: "✓";
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* general sibling selector adds strike through when checked */
+.task-item input[type="checkbox"]:checked ~ .task-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+/* functional pseudo class has checks if card contains any checked item */
+.card-tasks:has(input:checked) {
+    border-color: rgba(232, 93, 4, 0.4);
+}
+
+/* color swatches card spans six columns */
+.card-palette {
+    grid-column: span 6;
+}
+
+.swatches-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.swatch-item {
+    height: 90px;
+    border-radius: 14px;
+    display: flex;
+    align-items: flex-end;
+    padding: 8px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* structural nth child selector colors each swatch individually */
+.swatch-item:nth-child(1) { background: #e85d04; color: white; }
+.swatch-item:nth-child(2) { background: #ffba08; color: black; }
+.swatch-item:nth-child(3) { background: #ffe49e; color: black; }
+.swatch-item:nth-child(4) { background: #d8f3dc; color: black; }
+
+/* note card spans full 12 columns across the bottom */
+.card-note {
+    grid-column: span 12;
+}
+
+.pin-badge {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 11px;
+    background: bisque;
+    color: var(--accent-orange);
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* float property pushes icon to left and allows text to flow around it */
+.float-icon {
+    float: left;
+    width: 45px;
+    height: 45px;
+    background: papayawhip;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.note-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.note-body {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* clear both clears floats so this element stays below any floated children */
+.clear-fix-box {
+    clear: both;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-soft);
+}
+
+/* media query ensures single column layout on smaller laptop or mobile screens */
+@media (max-width: 850px) {
+    .dashboard-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .card-event, .card-audio, .card-tasks, .card-palette, .card-note {
+        grid-column: span 1;
+    }
+}

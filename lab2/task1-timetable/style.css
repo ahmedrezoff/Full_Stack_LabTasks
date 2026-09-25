@@ -1,0 +1,157 @@
+:root {
+    --bg-main: floralwhite;       
+    --text-main: dimgrey;     
+    --border-color: gainsboro;  
+    
+    --color-ai: mistyrose;      
+    --color-os: lightcyan;      
+    --color-algo: papayawhip;    
+    --color-math: honeydew;    
+    --color-mgt: lavender;     
+    --color-web: peachpuff;     
+    --color-advisory: lightyellow; 
+}
+
+body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    margin: 40px 20px;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+.timetable-wrapper {
+    max-width: 1200px;
+    margin: 0 auto; 
+    
+    /* X Y blur spread color. i always forget the order of these */
+    box-shadow: 0 10px 30px lightgray; 
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px; 
+}
+
+
+.header-container {
+    display: flex;
+    align-items: baseline;  /* keeps the text bottoms aligned instead of middle so it dosent look weird */
+    margin-bottom: 15px;
+    border-bottom: 2px solid coral; 
+    padding-bottom: 10px;
+}
+
+.air-uni {
+    width: 60px;
+    font-size: 13px;
+    font-weight: bold;
+    color: gray;
+}
+
+.main-title {
+    flex-grow: 1; /* eats up all the empty space in the flex container */
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    margin-left: -60px; 
+    color: midnightblue; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* removes those ugly double borders html adds by default */
+    table-layout: fixed; /* sir said this stops columns from streching weirdly based on text length */
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+}
+
+
+th {
+    padding: 15px 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: dimgray;
+    background-color: whitesmoke;
+    vertical-align: top; 
+}
+
+.col-day {
+    width: 60px; 
+    border-top: 1px solid transparent; 
+    border-left: 1px solid transparent;
+    background-color: transparent;
+}
+
+.sub-time {
+    font-size: 10px;
+    display: block; 
+    margin-top: 8px;
+    color: darkgray;
+}
+
+.day {
+    font-size: 32px;
+    font-weight: bold;
+    color: midnightblue;
+    text-align: center;
+    padding: 10px 0;
+    background-color: whitesmoke;
+}
+
+.class-cell {
+    position: relative; 
+    padding: 25px 5px 10px 5px; 
+    text-align: center;
+    height: 95px;
+    vertical-align: middle;
+    transition: all 0.2s ease-in-out; 
+}
+
+
+.empty {
+    background-color: floralwhite; 
+}
+
+.instructor {
+    position: absolute; /* pins it to the top left of the class cell */
+    top: 5px;
+    left: 5px;
+    font-size: 8px;
+    font-weight: 600;
+    color: dimgray;
+    text-align: left;
+    line-height: 1.2;
+    white-space: nowrap; /* forces the name on one line so it dosent wrap and look stupid */
+}
+
+.subject {
+    font-size: 13px;
+    font-weight: bold;
+    color: black;
+    display: block;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.room {
+    font-size: 11px;
+    color: dimgray;
+    display: block;
+}
+
+
+.bg-ai { background-color: var(--color-ai); }
+.bg-os { background-color: var(--color-os); }
+.bg-algo { background-color: var(--color-algo); }
+.bg-math { background-color: var(--color-math); }
+.bg-mgt { background-color: var(--color-mgt); }
+.bg-web { background-color: var(--color-web); }
+.bg-advisory { background-color: var(--color-advisory); }
+
+.footer {
+    font-size: 11px;
+    color: gray;
+    margin-top: 10px;
+    text-align: left;
+    font-style: italic;
+}

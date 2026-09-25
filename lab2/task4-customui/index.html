@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Workspace UI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="sticky-nav">
+      <div class="nav-brand">StudioOS</div>
+      <div class="search-wrapper">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search components..."
+        />
+      </div>
+      <div class="nav-status" data-status="live">System Online</div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+      <div class="widget-card card-event">
+        <div class="event-badge">Upcoming Session</div>
+        <h1 class="event-time">02:00 PM</h1>
+        <p class="event-location">Library, 3rd Floor</p>
+        <h2 class="event-title">Interactive CSS Architecture</h2>
+
+        <div class="step-indicator">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot-count">1 of 3</span>
+        </div>
+
+        <button type="button" class="btn-primary">Reserve Spot</button>
+      </div>
+
+      <div class="widget-card card-audio">
+        <div class="audio-header">
+          <span class="badge-audio">Focus Sound</span>
+          <span class="audio-time">calc unit</span>
+        </div>
+
+        <div class="vinyl-record">
+          <div class="vinyl-center"></div>
+        </div>
+
+        <h3 class="track-title">Lofi Chill Beats for Coding</h3>
+        <p class="track-artist">Ambient Frequency</p>
+
+        <div class="track-bar">
+          <div class="track-progress"></div>
+        </div>
+
+        <div class="audio-controls">
+          <button type="button" class="ctrl-btn">⏮</button>
+          <button type="button" class="ctrl-btn play-btn">▶</button>
+          <button type="button" class="ctrl-btn">⏭</button>
+        </div>
+      </div>
+
+      <div class="widget-card card-tasks">
+        <div class="tasks-header">
+          <h3>Design System Checklist</h3>
+          <span class="task-counter">3 Items</span>
+        </div>
+
+        <div class="checklist">
+          <label class="task-item" data-priority="high">
+            <input type="checkbox" checked />
+            <span class="task-custom-box"></span>
+            <span class="task-text">Pseudo elements and styling</span>
+          </label>
+
+          <label class="task-item" data-priority="medium">
+            <input type="checkbox" />
+            <span class="task-custom-box"></span>
+            <span class="task-text">Attribute selectors check</span>
+          </label>
+
+          <label class="task-item" data-priority="low">
+            <input type="checkbox" />
+            <span class="task-custom-box"></span>
+            <span class="task-text">Fluid typography scaling</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="widget-card card-palette">
+        <h3>Dynamic Color Palette</h3>
+        <div class="swatches-grid">
+          <div class="swatch-item"><span>Terracotta</span></div>
+          <div class="swatch-item"><span>Peach</span></div>
+          <div class="swatch-item"><span>Vanilla</span></div>
+          <div class="swatch-item"><span>Sage</span></div>
+        </div>
+      </div>
+
+      <div class="widget-card card-note">
+        <div class="pin-badge">Pinned Memo</div>
+        <div class="float-icon">💡</div>
+        <h4 class="note-title">Float and Ellipsis Behaviour</h4>
+        <p class="note-body">
+          Text wraps smoothly around floated objects just like magazine
+          editorial layouts do in old school print. This text also has ellipsis
+          cutoff rules applied when it exceeds maximum width constraints.
+        </p>
+        <div class="clear-fix-box">Content cleared beneath floats</div>
+      </div>
+    </div>
+  </body>
+</html>

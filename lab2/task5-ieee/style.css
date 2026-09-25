@@ -1,0 +1,221 @@
+/* root sets up standard dimensions for our document */
+:root {
+    --page-width: 8.5in;
+    --page-padding: 0.75in;
+    --gutter: 0.25in;
+}
+
+body {
+    background-color: gainsboro;
+    margin: 0;
+    padding: 30px 0;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    color: black;
+    line-height: 1.15;
+}
+
+/* this wraps the entire paper and forces it to look like physical us letter paper */
+.paper-header, .paper-columns {
+    width: var(--page-width);
+    background-color: white;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.paper-header {
+    padding: var(--page-padding) var(--page-padding) 0 var(--page-padding);
+    text-align: center;
+}
+
+.paper-title {
+    font-size: 24pt;
+    font-weight: normal;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.authors-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 25px;
+}
+
+.author-card {
+    text-align: center;
+    font-size: 10pt;
+}
+
+.author-name {
+    font-size: 11pt;
+    margin-bottom: 2px;
+}
+
+.author-dept, .author-inst, .author-loc {
+    font-style: italic;
+    margin: 1px 0;
+}
+
+.author-mail {
+    margin-top: 3px;
+}
+
+/* column count two is the core ieee rule that splits our text into two distinct columns */
+.paper-columns {
+    column-count: 2;
+    column-gap: var(--gutter);
+    padding: 0 var(--page-padding) var(--page-padding) var(--page-padding);
+    font-size: 10pt;
+    text-align: justify;
+}
+
+/* column span all lets the abstract break across both columns across the top */
+.abstract-section {
+    column-span: all;
+    margin-bottom: 18px;
+}
+
+.abstract-text, .keywords-text {
+    text-align: justify;
+    margin-bottom: 8px;
+    font-size: 10pt;
+}
+
+p {
+    /* text indent pushes the first line inward just like classic published academic papers */
+    text-indent: 0.16in;
+    margin: 0 0 6px 0;
+}
+
+.abstract-text, .keywords-text {
+    text-indent: 0;
+}
+
+h2 {
+    font-size: 10pt;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 14px 0 6px 0;
+    /* break after avoid stops headings from awkwardly getting stuck at the very bottom of a column */
+    break-after: avoid;
+}
+
+h3 {
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: normal;
+    margin: 10px 0 4px 0;
+    text-indent: 0.16in;
+    break-after: avoid;
+}
+
+/* equation box uses flex to center the formula while shoving the number to the far right edge */
+.equation-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    margin: 8px 0;
+    text-indent: 0;
+}
+
+.equation-math {
+    margin: 0 auto;
+    font-style: italic;
+}
+
+.equation-num {
+    font-style: normal;
+}
+
+/* table styling following strict academic layouts with horizontal rules */
+.paper-table-wrapper {
+    margin: 14px 0;
+    text-indent: 0;
+}
+
+.table-title {
+    font-size: 8pt;
+    text-align: center;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    text-align: center;
+}
+
+th, td {
+    padding: 4px 6px;
+}
+
+th {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    font-weight: normal;
+}
+
+tbody tr:last-child td {
+    border-bottom: 1px solid black;
+}
+
+/* figure box drawn completely with css shapes instead of depending on broken picture files */
+.paper-figure-wrapper {
+    margin: 16px 0;
+    text-indent: 0;
+    text-align: center;
+}
+
+.figure-illustration {
+    width: 100%;
+    height: 100px;
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: floralwhite;
+}
+
+.crater-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.shockwave-ring {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 1px dashed black;
+}
+
+.figure-caption {
+    font-size: 8pt;
+    text-align: left;
+    margin-top: 6px;
+    text-indent: 0;
+}
+
+.references-block h2 {
+    text-align: left;
+    text-transform: none;
+    font-style: italic;
+}
+
+.references-list {
+    padding-left: 18px;
+    margin: 0;
+    font-size: 8pt;
+}
+
+.references-list li {
+    margin-bottom: 4px;
+    text-indent: 0;
+}

@@ -1,0 +1,173 @@
+
+:root {
+    --bg-gradient-top: #ffb580;
+    --bg-gradient-bottom: #ffe1c2;
+    --card-bg: #ffedd6;
+    --text-dark: #4a2c11;
+    --text-light: #7a5230;
+    --accent-orange: #d95319;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    color: var(--text-dark);
+    background: linear-gradient(to bottom right, var(--bg-gradient-top), var(--bg-gradient-bottom));
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    /* display grid turns this container into a grid layout so i can easily put the sidebar on the left and content on the right */
+    display: grid;
+    /* this sets the width of the columns. the first is exactly 320 pixels for the sidebar and the one fr means the right side takes up whatever space is left over */
+    grid-template-columns: 320px 1fr;
+    /* gap puts exactly 30 pixels of empty space between the left and right columns so they do not touch */
+    gap: 30px;
+}
+
+.sidebar {
+    background-color: var(--card-bg);
+    padding: 30px;
+    /* border radius curves the corners of the box perfectly to match that smooth app ui look */
+    border-radius: 30px;
+    /* box shadow creates a soft blur behind the box making it look like it is popping off the screen */
+    box-shadow: 0 12px 35px rgba(217, 83, 25, 0.15);
+    height: max-content;
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    /* object fit cover forces the spiderman image to fill the entire circle without stretching or squishing the face */
+    object-fit: cover;
+    margin: 0 auto 20px auto;
+    /* display block and auto margins force the image to sit exactly in the middle of the sidebar */
+    display: block;
+    border: 4px solid var(--accent-orange);
+}
+
+.name {
+    text-align: center;
+    font-size: 26px;
+    margin: 0 0 5px 0;
+    color: var(--text-dark);
+}
+
+.title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--accent-orange);
+    margin: 0 0 30px 0;
+}
+
+.sidebar-section {
+    margin-bottom: 25px;
+}
+
+.sidebar-section h3 {
+    font-size: 18px;
+    border-bottom: 2px solid var(--accent-orange);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.sidebar-section p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.skills-container {
+    /* flex allows all these little skill tags to sit next to each other in a row automatically */
+    display: flex;
+    /* flex wrap tells the tags to drop down to a new line if they run out of horizontal space instead of shrinking */
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.skill-tag {
+    background-color: var(--accent-orange);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.main-content {
+    /* flex direction column stacks all the experience and project cards vertically one on top of the other */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(217, 83, 25, 0.1);
+}
+
+.section-heading {
+    margin: 10px 0 0 0;
+    font-size: 28px;
+    color: var(--text-dark);
+}
+
+.card-header {
+    display: flex;
+    /* space between pushes the job title to the far left and the date badge to the far right automatically */
+    justify-content: space-between;
+    /* align items center ensures the text of the title and the date badge line up perfectly in the middle horizontally */
+    align-items: center;
+    border-bottom: 1px solid rgba(217, 83, 25, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--text-dark);
+}
+
+.date-badge {
+    background-color: rgba(217, 83, 25, 0.15);
+    color: var(--accent-orange);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.company {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--accent-orange);
+    margin: 0 0 10px 0;
+}
+
+.tech-stack {
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: italic;
+    margin: 0 0 10px 0;
+}
+
+ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-light);
+}
