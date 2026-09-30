@@ -1,0 +1,117 @@
+:root {
+    --bg-main: floralwhite;
+    --color-ai: mistyrose;
+    --color-os: lightcyan;
+    --color-algo: papayawhip;
+    --color-math: honeydew;
+    --color-mgt: lavender;
+    --color-web: peachpuff;
+    --color-advisory: lightyellow;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    background-color: var(--bg-main);
+}
+
+.timetable-wrapper {
+    max-width: 1200px;
+}
+
+/* bootstrap's border-bottom is 1px gray; we still want the coral accent */
+.header-container {
+    border-bottom: 2px solid coral !important;
+}
+
+.air-uni {
+    width: 60px;
+    font-size: 13px;
+    font-weight: bold;
+    color: gray;
+}
+
+.main-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    margin-left: -60px;
+    color: midnightblue;
+}
+
+table {
+    table-layout: fixed; /* bootstrap doesn't set this, keeps columns even */
+}
+
+.col-day {
+    width: 60px;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    background-color: transparent;
+}
+
+th {
+    font-size: 13px;
+    color: dimgray;
+    background-color: whitesmoke;
+    vertical-align: top;
+}
+
+.sub-time {
+    font-size: 10px;
+    display: block;
+    margin-top: 8px;
+    color: darkgray;
+}
+
+.day {
+    font-size: 32px;
+    font-weight: bold;
+    color: midnightblue;
+    background-color: whitesmoke;
+}
+
+.class-cell {
+    position: relative;
+    padding: 25px 5px 10px 5px;
+    height: 95px;
+}
+
+.empty {
+    background-color: var(--bg-main);
+}
+
+.instructor {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 8px;
+    font-weight: 600;
+    color: dimgray;
+    text-align: left;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.subject {
+    font-size: 13px;
+    font-weight: bold;
+    color: black;
+    display: block;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.room {
+    font-size: 11px;
+    color: dimgray;
+    display: block;
+}
+
+.bg-ai { background-color: var(--color-ai); }
+.bg-os { background-color: var(--color-os); }
+.bg-algo { background-color: var(--color-algo); }
+.bg-math { background-color: var(--color-math); }
+.bg-mgt { background-color: var(--color-mgt); }
+.bg-web { background-color: var(--color-web); }
+.bg-advisory { background-color: var(--color-advisory); }

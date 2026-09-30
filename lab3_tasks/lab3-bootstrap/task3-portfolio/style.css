@@ -1,0 +1,127 @@
+:root {
+    --bg-gradient-top: #ffb580;
+    --bg-gradient-bottom: #ffe1c2;
+    --card-bg: #ffedd6;
+    --text-dark: #4a2c11;
+    --text-light: #7a5230;
+    --accent-orange: #d95319;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background: linear-gradient(to bottom right, var(--bg-gradient-top), var(--bg-gradient-bottom));
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: var(--card-bg);
+    border-radius: 30px;
+    box-shadow: 0 12px 35px rgba(217, 83, 25, 0.15);
+    height: max-content;
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px auto;
+    display: block;
+    border: 4px solid var(--accent-orange);
+}
+
+.name {
+    text-align: center;
+    font-size: 26px;
+    margin: 0 0 5px 0;
+    color: var(--text-dark);
+}
+
+.title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--accent-orange);
+    margin: 0 0 30px 0;
+}
+
+.sidebar-section {
+    margin-bottom: 25px;
+}
+
+.sidebar-section h3 {
+    font-size: 18px;
+    border-bottom: 2px solid var(--accent-orange);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.sidebar-section p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.skill-tag {
+    background-color: var(--accent-orange);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.content-card {
+    background-color: var(--card-bg);
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(217, 83, 25, 0.1);
+}
+
+.section-heading {
+    margin: 10px 0 0 0;
+    font-size: 28px;
+    color: var(--text-dark);
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(217, 83, 25, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--text-dark);
+}
+
+.date-badge {
+    background-color: rgba(217, 83, 25, 0.15);
+    color: var(--accent-orange);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.company {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--accent-orange);
+    margin: 0 0 10px 0;
+}
+
+.tech-stack {
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: italic;
+    margin: 0 0 10px 0;
+}
+
+li {
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-light);
+}
