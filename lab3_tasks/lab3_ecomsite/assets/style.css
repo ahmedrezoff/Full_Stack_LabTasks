@@ -1,0 +1,237 @@
+/* ===================================================================
+   Wheeler, Rawson & Co. — vintage theme layer on top of Bootstrap 5.
+   This file only overrides Bootstrap's existing classes/variables.
+   It does not reinvent layout — grid, navbar, card, form, offcanvas
+   structure all stay pure Bootstrap.
+   =================================================================== */
+
+:root {
+  --parchment: #d9c49c;       /* page background */
+  --parchment-light: #e4d3b2; /* card surface */
+  --parchment-dark: #cbb286;  /* card header / alt surface */
+  --ink: #1c1611;             /* body text */
+  --ink-muted: #544637;       /* secondary text */
+  --border-ink: #8c7255;      /* rules / card borders */
+  --crimson: #740009;         /* primary action color */
+  --crimson-hover: #560007;
+}
+
+body {
+  background-color: var(--parchment);
+  color: var(--ink);
+  font-family: 'Merriweather', Georgia, serif;
+  padding-top: 84px; /* space for fixed navbar */
+}
+
+h1, h2, h3, h4, h5, h6,
+.vintage-heading, .navbar-brand, .nav-link, .btn,
+.form-label, .badge {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+h1, h2, h3, h4, .vintage-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+
+a { color: var(--crimson); }
+a:hover { color: var(--crimson-hover); }
+
+/* ---------- Navbar ---------- */
+.navbar-vintage {
+  background-color: var(--parchment-dark);
+  border-bottom: 2px solid var(--border-ink);
+}
+.navbar-vintage .navbar-brand {
+  color: var(--crimson);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.navbar-vintage .navbar-brand small {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+.navbar-vintage .nav-link {
+  color: var(--ink) !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+}
+.navbar-vintage .nav-link.active {
+  color: var(--crimson) !important;
+  border-bottom: 2px solid var(--crimson);
+}
+.navbar-vintage .nav-link:hover { color: var(--crimson) !important; }
+
+/* ---------- Buttons ---------- */
+.btn-vintage {
+  background-color: var(--crimson);
+  border: 1px solid var(--ink);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 2px;
+}
+.btn-vintage:hover, .btn-vintage:focus {
+  background-color: var(--crimson-hover);
+  color: #fff;
+}
+.btn-vintage-outline {
+  background-color: var(--parchment-light);
+  border: 1px solid var(--border-ink);
+  color: var(--ink);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+}
+.btn-vintage-outline:hover {
+  background-color: var(--parchment-dark);
+  color: var(--ink);
+}
+
+/* ---------- Cards / surfaces ---------- */
+.card-vintage {
+  background-color: var(--parchment-light);
+  border: 1px solid var(--border-ink);
+  border-radius: 2px;
+}
+.card-vintage .card-header {
+  background-color: var(--parchment-dark);
+  border-bottom: 1px solid var(--border-ink);
+}
+
+/* ---------- Forms ---------- */
+.form-control, .form-select {
+  background-color: #f0e2ca;
+  border: 1px solid var(--border-ink);
+  color: var(--ink);
+  border-radius: 2px;
+}
+.form-control:focus, .form-select:focus {
+  background-color: #f7ede0;
+  border-color: var(--crimson);
+  box-shadow: 0 0 0 0.2rem rgba(116, 0, 9, 0.15);
+  color: var(--ink);
+}
+.form-label {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+.form-check-input:checked {
+  background-color: var(--crimson);
+  border-color: var(--crimson);
+}
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(116, 0, 9, 0.15);
+}
+
+/* ---------- Dotted price leader ---------- */
+.leader-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.leader-row .leader-dots {
+  flex: 1;
+  border-bottom: 2px dotted var(--border-ink);
+  transform: translateY(-4px);
+}
+.leader-row .leader-price {
+  font-weight: 700;
+  color: var(--crimson);
+  white-space: nowrap;
+}
+
+/* ---------- Product cards ---------- */
+.product-card {
+  background-color: var(--parchment-light);
+  border: 1px solid var(--border-ink);
+  border-radius: 2px;
+  height: 100%;
+}
+.product-card .product-img {
+  height: 160px;
+  background-color: rgba(203, 178, 134, 0.35);
+  border: 1px solid var(--border-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.product-card .product-img img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.badge-rank {
+  background-color: var(--crimson);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+}
+.badge-open {
+  background-color: var(--parchment-dark);
+  border: 1px solid var(--border-ink);
+  color: var(--ink);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+}
+
+/* ---------- Quantity stepper ---------- */
+.qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-ink);
+}
+.qty-stepper button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--parchment-dark);
+  color: var(--ink);
+  font-weight: 700;
+}
+.qty-stepper button:hover { background: var(--border-ink); color: #fff; }
+.qty-stepper input {
+  width: 42px;
+  text-align: center;
+  border: none;
+  border-left: 1px solid var(--border-ink);
+  border-right: 1px solid var(--border-ink);
+  background: var(--parchment-light);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ---------- Star ratings ---------- */
+.stars-crimson { color: var(--crimson); }
+
+/* ---------- Footer ---------- */
+.footer-vintage {
+  background-color: var(--parchment-dark);
+  border-top: 2px solid var(--border-ink);
+  color: var(--ink-muted);
+}
+
+/* ---------- Divider rule ---------- */
+.rule {
+  border-bottom: 1px solid var(--border-ink);
+}
