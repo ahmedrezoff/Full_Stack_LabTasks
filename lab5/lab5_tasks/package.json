@@ -1,0 +1,8 @@
+{
+  "name": "lab5-tasks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node task1.js && node task2.js && node task3.js && node task4.js && node task5/main.js && node task6.js && node task7.js && node task8.js"
+  }
+}
