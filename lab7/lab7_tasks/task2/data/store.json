@@ -1,0 +1,46 @@
+{
+    "nextProductId": 7,
+    "nextCustomerId": 1,
+    "nextOrderId": 1,
+    "products": [
+        {
+            "id": 1,
+            "name": "Mauser Pistol",
+            "description": "Rapid discharge semi-automatic firearm with 10-shot stripper box clip.",
+            "price": 600
+        },
+        {
+            "id": 2,
+            "name": "Elephant Rifle",
+            "description": "Nitro express dual cold-forged ordnance steel barrels for massive stopping force.",
+            "price": 580
+        },
+        {
+            "id": 3,
+            "name": "Semi-Auto Shotgun",
+            "description": "Self-loading recoil repeating shotgun chambering heavy 12-gauge cartridges.",
+            "price": 540
+        },
+        {
+            "id": 4,
+            "name": "Advanced Camera",
+            "description": "Portable folding hand camera with rapid rectilinear optics and leather bellows.",
+            "price": 540
+        },
+        {
+            "id": 5,
+            "name": "LeMat Revolver",
+            "description": "9-shot cylinder with secondary 20-gauge buckshot central barrel.",
+            "price": 317
+        },
+        {
+            "id": 6,
+            "name": "Salizzo Bandolier",
+            "description": "Hand-stitched harness leather holding over 120 rifle rounds securely.",
+            "price": 358.5
+        }
+    ],
+    "customers": [],
+    "cart": [],
+    "orders": []
+}

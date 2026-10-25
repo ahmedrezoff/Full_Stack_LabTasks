@@ -1,0 +1,1217 @@
+{
+    "info": {
+        "name": "CS301 - Lab 7 Tasks 1 and 2",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": "Start task1.js on port 3004 and task2/server.js on port 3005. Run each folder from top to bottom. IDs are saved automatically. Use Body > raw > JSON for writes. Task 1 loses records after a server restart. Task 2 saves to task2/data/store.json. Task 2 is a local lab demo with one shared cart; login checks credentials without creating sessions or restricting routes. Checkout records an order without processing payment. To check persistence, stop and restart Task 2, then repeat View saved order and List original catalogue. Demo orders/customers remain on disk."
+    },
+    "variable": [
+        {
+            "key": "memoryUrl",
+            "value": "http://localhost:3004"
+        },
+        {
+            "key": "storeUrl",
+            "value": "http://localhost:3005"
+        },
+        {
+            "key": "studentId",
+            "value": ""
+        },
+        {
+            "key": "teacherId",
+            "value": ""
+        },
+        {
+            "key": "attendanceId",
+            "value": ""
+        },
+        {
+            "key": "marksId",
+            "value": ""
+        },
+        {
+            "key": "productId",
+            "value": ""
+        },
+        {
+            "key": "customerId",
+            "value": ""
+        },
+        {
+            "key": "orderId",
+            "value": ""
+        },
+        {
+            "key": "customerEmail",
+            "value": ""
+        }
+    ],
+    "item": [
+        {
+            "name": "Task 1 - In-memory student management",
+            "item": [
+                {
+                    "name": "01 - Health",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/health"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "02 - Create student",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{memoryUrl}}/students",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Ali\",\n    \"department\": \"CS\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "if (pm.response.code === 201) {",
+                                    "    pm.collectionVariables.set(\"studentId\", pm.response.json().id);",
+                                    "}"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "03 - List students",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/students"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "04 - View student",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/students/{{studentId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "05 - Update student (all fields)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{memoryUrl}}/students/{{studentId}}",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Ali Ahmed\",\n    \"department\": \"SE\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "06 - Create teacher",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{memoryUrl}}/teachers",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Ahmed\",\n    \"subject\": \"Web Development\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "if (pm.response.code === 201) {",
+                                    "    pm.collectionVariables.set(\"teacherId\", pm.response.json().id);",
+                                    "}"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "07 - List teachers",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/teachers"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "08 - View teacher",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/teachers/{{teacherId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "09 - Update teacher",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{memoryUrl}}/teachers/{{teacherId}}",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Ahmed Khan\",\n    \"subject\": \"Node.js\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "10 - Delete teacher",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{memoryUrl}}/teachers/{{teacherId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 204\", function () {",
+                                    "    pm.response.to.have.status(204);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "11 - Create attendance",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{memoryUrl}}/attendance",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"studentId\": {{studentId}},\n    \"date\": \"2026-10-24\",\n    \"status\": \"present\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "if (pm.response.code === 201) {",
+                                    "    pm.collectionVariables.set(\"attendanceId\", pm.response.json().id);",
+                                    "}"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "12 - List attendance",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/attendance"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "13 - View attendance",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/attendance/{{attendanceId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "14 - Update attendance",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{memoryUrl}}/attendance/{{attendanceId}}",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"studentId\": {{studentId}},\n    \"date\": \"2026-10-24\",\n    \"status\": \"absent\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "15 - Student still has attendance (expected error)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{memoryUrl}}/students/{{studentId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 409\", function () {",
+                                    "    pm.response.to.have.status(409);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "16 - Delete attendance",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{memoryUrl}}/attendance/{{attendanceId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 204\", function () {",
+                                    "    pm.response.to.have.status(204);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "17 - Create marks",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{memoryUrl}}/marks",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"studentId\": {{studentId}},\n    \"subject\": \"Web Development\",\n    \"obtainedMarks\": 85,\n    \"totalMarks\": 100\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "if (pm.response.code === 201) {",
+                                    "    pm.collectionVariables.set(\"marksId\", pm.response.json().id);",
+                                    "}"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "18 - List marks",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/marks"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "19 - View marks",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{memoryUrl}}/marks/{{marksId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "20 - Update marks",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{memoryUrl}}/marks/{{marksId}}",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"studentId\": {{studentId}},\n    \"subject\": \"Web Development\",\n    \"obtainedMarks\": 90,\n    \"totalMarks\": 100\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "21 - Delete marks",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{memoryUrl}}/marks/{{marksId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 204\", function () {",
+                                    "    pm.response.to.have.status(204);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "22 - Delete student last",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{memoryUrl}}/students/{{studentId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 204\", function () {",
+                                    "    pm.response.to.have.status(204);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Task 2 - Persistent e-commerce",
+            "item": [
+                {
+                    "name": "01 - Health",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/health"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "02 - List original catalogue",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/products"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "03 - View original camera",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/products/4"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "04 - Create demo product",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{storeUrl}}/products",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Survey Notebook\",\n    \"description\": \"A notebook for field notes.\",\n    \"price\": 19.99\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "if (pm.response.code === 201) {",
+                                    "    pm.collectionVariables.set(\"productId\", pm.response.json().id);",
+                                    "}"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "05 - View demo product",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/products/{{productId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "06 - Update demo product (all fields)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{storeUrl}}/products/{{productId}}",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Survey Notebook\",\n    \"description\": \"Hardcover notebook for field notes.\",\n    \"price\": 24.5\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "07 - Register customer",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{storeUrl}}/auth/register",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Lab Student\",\n    \"email\": \"{{customerEmail}}\",\n    \"password\": \"lab7pass\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.collectionVariables.set(\"customerEmail\", \"lab7-\" + Date.now() + \"@example.com\");"
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "if (pm.response.code === 201) {",
+                                    "    pm.collectionVariables.set(\"customerId\", pm.response.json().id);",
+                                    "}"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "08 - Log in (credential check)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{storeUrl}}/auth/login",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"{{customerEmail}}\",\n    \"password\": \"lab7pass\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "09 - View shared cart",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/cart"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "10 - Add demo product",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{storeUrl}}/cart/items",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"productId\": {{productId}},\n    \"quantity\": 2\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "11 - Set quantity to 3",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{storeUrl}}/cart/items/{{productId}}",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"quantity\": 3\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "12 - Remove demo product",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{storeUrl}}/cart/items/{{productId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 204\", function () {",
+                                    "    pm.response.to.have.status(204);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "13 - Add demo product again",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{storeUrl}}/cart/items",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"productId\": {{productId}},\n    \"quantity\": 2\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "14 - Place order (server calculates total)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{storeUrl}}/orders",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"customerId\": {{customerId}},\n    \"recipientName\": \"Lab Student\",\n    \"depot\": \"Valentine Central Rail Depot\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "if (pm.response.code === 201) {",
+                                    "    pm.collectionVariables.set(\"orderId\", pm.response.json().id);",
+                                    "}"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "15 - List saved orders",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/orders"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "16 - View saved order",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/orders/{{orderId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "17 - Cart is now empty",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/cart"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "18 - Delete demo product (order keeps its saved details)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{storeUrl}}/products/{{productId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 204\", function () {",
+                                    "    pm.response.to.have.status(204);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                },
+                {
+                    "name": "19 - View order after product deletion",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{storeUrl}}/orders/{{orderId}}"
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test(\"Expected status 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});"
+                                ]
+                            }
+                        }
+                    ],
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
