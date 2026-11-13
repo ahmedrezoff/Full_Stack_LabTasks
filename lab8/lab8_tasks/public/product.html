@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mauser Pistol No. 712 — Wheeler, Rawson &amp; Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="assets/style.css" rel="stylesheet" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-vintage fixed-top py-2">
+  <div class="container-xl">
+    <a class="navbar-brand" href="index.html">Wheeler, Rawson &amp; Co.<small>General Merchandise — Est. 1899</small></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Catalogue</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Clothing</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Drugs &amp; Tonics</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Horses</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Dry Goods</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-3">
+        <a class="nav-link" href="login.html">Account</a>
+        <a class="btn btn-vintage-outline d-flex align-items-center gap-2" href="cart.html">
+          Cart <span class="badge bg-danger rounded-pill" id="nav-cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container-xl py-4">
+
+  <nav aria-label="breadcrumb" class="small text-ink-muted mb-3">
+    <a href="index.html" class="text-reset">Catalogue</a> / Pistols / <span class="text-reset fw-bold">Mauser Pistol No. 712</span>
+  </nav>
+
+  <div class="card-vintage p-4 p-md-5 mb-4">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-6">
+        <div class="product-img" style="height:280px;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs_BfrVdF_-ox1z4ad5635TiIFAQ55WlvcKsG1thkkZs3L7y6pDM_yC3Aeo-boPAjB6Pc8phgwQcTpconbeOYnD4OQqqH6J6_Nzi2Db7fS9EkcmpAD-ULLP4BwnZzAmLUaaf4pM0tICbWAO7ggkwreDaACdvP86QNO5qFvhIwiiuwkYBlMCBMFDTV5TnujQ9Pua2E5cyqAOgkJkhCB5Y-f4_7a7UkzfNuw_mxcMwCbAErWSJQ1Lloq" alt="Mauser Pistol No. 712">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <span class="badge badge-open me-2">Semi-Automatic</span>
+        <span class="badge badge-rank">Rank 34 Required</span>
+
+        <div class="leader-row my-3">
+          <h1 class="h2 mb-0">Mauser Pistol No. 712</h1>
+          <span class="leader-dots"></span>
+          <span class="leader-price fs-3">$600.00</span>
+        </div>
+
+        <p class="text-ink-muted mb-4">A peerless semi-automatic pistol with a rapid-fire ten-round box magazine and supreme muzzle velocity for frontier self-defense.</p>
+
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div class="qty-stepper">
+            <button type="button" id="qty-minus">-</button>
+            <input type="text" id="qty-input" readonly value="1">
+            <button type="button" id="qty-plus">+</button>
+          </div>
+          <button class="btn btn-vintage flex-grow-1" id="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <div class="alert alert-success d-none py-2 px-3 mb-0" id="cart-alert">Added to your cart.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews -->
+  <div class="card-vintage mb-4">
+    <div class="card-header py-3 px-4 d-flex justify-content-between align-items-center">
+      <h2 class="h5 mb-0">Customer Reviews</h2>
+      <span class="stars-crimson">&#9733;&#9733;&#9733;&#9733;&#9734; <span class="text-ink small">4.8 / 5.0 (3 reviews)</span></span>
+    </div>
+    <div class="card-body p-4">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="p-3 h-100" style="background:var(--parchment-dark); border:1px solid var(--border-ink);">
+            <div class="d-flex justify-content-between mb-2"><strong>Arthur M.</strong><span class="stars-crimson">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <p class="small mb-0">Fires as fast as you can pull the trigger. Reloading is lightning fast on horseback.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 h-100" style="background:var(--parchment-dark); border:1px solid var(--border-ink);">
+            <div class="d-flex justify-content-between mb-2"><strong>Sadie A.</strong><span class="stars-crimson">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <p class="small mb-0">Remarkable balance and craftsmanship. Keeps operating through rough country.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 h-100" style="background:var(--parchment-dark); border:1px solid var(--border-ink);">
+            <div class="d-flex justify-content-between mb-2"><strong>Dutch v.d.L.</strong><span class="stars-crimson">&#9733;&#9733;&#9733;&#9733;&#9734;</span></div>
+            <p class="small mb-0">Elegant weapon of the modern frontier era. Expensive but worth it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer-vintage py-4 mt-5">
+  <div class="container-xl d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small">
+    <span>&copy; 1899 Wheeler, Rawson &amp; Co. General Merchandise</span>
+    <span>Index of Goods &bull; Telegraph Office &bull; Terms of Credit</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/cart.js"></script>
+<script>
+  const qtyInput = document.getElementById('qty-input');
+  document.getElementById('qty-minus').addEventListener('click', () => {
+    qtyInput.value = Math.max(1, parseInt(qtyInput.value, 10) - 1);
+  });
+  document.getElementById('qty-plus').addEventListener('click', () => {
+    qtyInput.value = Math.min(10, parseInt(qtyInput.value, 10) + 1);
+  });
+  document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+    addToCart(1, 'Mauser Pistol', 600.00, parseInt(qtyInput.value, 10));
+    const alertBox = document.getElementById('cart-alert');
+    alertBox.classList.remove('d-none');
+    setTimeout(() => alertBox.classList.add('d-none'), 3000);
+  });
+</script>
+</body>
+</html>
